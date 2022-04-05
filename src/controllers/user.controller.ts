@@ -8,9 +8,9 @@ import User from '../models/users.model';
 const userRouter: Router = express.Router();
 
 /**
-** @description register user
-** @public
-**/
+ * @route  POST api/users
+ * @desc   register user
+ * @access public */
 userRouter.post('/', validationRegisterUser, async (req: Request, res: Response) => {
     try {
         const validationErrors: Result<ValidationError> = validationResult(req);
@@ -35,6 +35,7 @@ userRouter.post('/', validationRegisterUser, async (req: Request, res: Response)
         // sign json web token send as response
         const payload: object = { user: { id : newUser.user_id} };
         const secretKey: jwt.Secret = process.env.jwtSecretKey || "undefinedKey";
+        console.log("userController", secretKey)
         const expiresIn: jwt.SignOptions = { expiresIn: 36000 }
 
         jwt.sign(payload, secretKey, expiresIn, (error, token) => {
@@ -49,8 +50,9 @@ userRouter.post('/', validationRegisterUser, async (req: Request, res: Response)
 })
 
 /**
-** @description get all users
-**/
+ * @route  GET api/users
+ * @desc   get all users
+ * @access public */
 userRouter.get('/', async (req: Request , res: Response) => {
     try {
         const users: User[] = await User.query();

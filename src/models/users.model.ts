@@ -25,6 +25,7 @@ export default class User extends Model {
         posts: {
             relation: Model.HasManyRelation,
             modelClass: Post,
+            filter: query => query.select('user_id', 'name', 'email'),
             join: {
                 from: "users.user_id",
                 to: "posts.fk_user_id"

@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 
 dotenv.config();
 
+// Verifies token and allows authenticated route
 export default (req: Request, res: Response, next: NextFunction) => {
 
   // get token from request

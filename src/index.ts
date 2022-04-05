@@ -2,6 +2,7 @@ import express, {Request,Response,Application} from 'express';
 import { connectDB } from './db';
 import userRouter from './controllers/user.controller';
 import postRouter from './controllers/post.controller';
+import authRouter from './controllers/auth.controller';
 
 const app: Application = express();
 const PORT: number = parseInt(process.env.PORT || '8000');
@@ -10,6 +11,7 @@ connectDB();
 app.use(express.json());
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/posts', postRouter);
+app.use('/api/v1/auth', authRouter);
 
 app.get("/", (req: Request, res: Response): void => {
   res.send("Typescript with Node.js!")
