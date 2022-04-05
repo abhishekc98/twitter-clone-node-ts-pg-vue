@@ -8,7 +8,7 @@ import User from '../models/users.model';
 const userRouter: Router = express.Router();
 
 /**
- * @route  POST api/users
+ * @route  POST api/<api-version>/users
  * @desc   register user
  * @access public */
 userRouter.post('/', validationRegisterUser, async (req: Request, res: Response) => {
@@ -50,7 +50,7 @@ userRouter.post('/', validationRegisterUser, async (req: Request, res: Response)
 })
 
 /**
- * @route  GET api/users
+ * @route  GET api/<api-version>/users
  * @desc   get all users
  * @access public */
 userRouter.get('/', async (req: Request , res: Response) => {

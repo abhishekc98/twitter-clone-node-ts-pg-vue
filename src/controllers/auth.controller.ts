@@ -8,7 +8,7 @@ import User from '../models/users.model';
 const authRouter: Router = express.Router();
 
 /**
- * @route  GET api/auth
+ * @route  GET api/<api-version>/auth
  * @desc   Auth route - get authenticated user
  * @access private */
 authRouter.get('/', auth,  async (req: Request, res: Response) => {
@@ -22,7 +22,7 @@ authRouter.get('/', auth,  async (req: Request, res: Response) => {
 });
 
 /**
- * @route  POST api/auth
+ * @route  POST api/<api-version>/auth
  * @desc   Login user - check password and get token
  * @access public */
 authRouter.post('/', [check('email', 'Please enter a valid email').isEmail(),

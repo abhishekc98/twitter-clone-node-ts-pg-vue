@@ -8,7 +8,7 @@ import { Result, ValidationError, validationResult } from 'express-validator';
 const postRouter: Router = express.Router();
 
 /**
- * @route  POST api/posts
+ * @route  POST api/<api-version>/posts
  * @desc   Submit post
  * @access private */
 postRouter.post('/', [auth, ...validationSubmitPost], 
@@ -32,7 +32,7 @@ async(req: Request, res: Response, next: NextFunction) => {
 })
 
 /**
- * @route  GET api/posts
+ * @route  GET api/<api-version>/posts
  * @desc   get all posts
  * @access public */
 postRouter.get('/',  
@@ -49,7 +49,7 @@ async (req: Request, res: Response) => {
 })
 
 /**
- * @route  GET api/posts/:id
+ * @route  GET api/<api-version>/posts/:id
  * @desc   get post by id
  * @access private */
 
@@ -68,7 +68,7 @@ async (req: Request, res: Response, next: NextFunction) => {
 })
 
 /**
- * @route   DELETE api/posts/:id
+ * @route   DELETE api/<api-version>/posts/:id
  * @desc    Delete a post by id
  * @access private */
 postRouter.delete('/:id', auth, 
