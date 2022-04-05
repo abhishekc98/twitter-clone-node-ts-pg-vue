@@ -10,10 +10,10 @@ npm install
 @types/* and other dev dependencies to be installed separately
 ```
 
-### Changelog v0.1
+### Changelog v0.2
 
 ```
-Backend: Added Types, created routes for user registration and submit post
+Backend: Added Types, created routes for user, posts, authentication
 Frontend: VueJS left navigation and feed component
 ```
 
