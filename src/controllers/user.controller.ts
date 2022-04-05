@@ -10,7 +10,8 @@ const userRouter: Router = express.Router();
 /**
  * @route  POST api/<api-version>/users
  * @desc   register user
- * @access public */
+ * @access public 
+ */
 userRouter.post('/', validationRegisterUser, async (req: Request, res: Response) => {
     try {
         const validationErrors: Result<ValidationError> = validationResult(req);
@@ -52,7 +53,8 @@ userRouter.post('/', validationRegisterUser, async (req: Request, res: Response)
 /**
  * @route  GET api/<api-version>/users
  * @desc   get all users
- * @access public */
+ * @access public 
+ */
 userRouter.get('/', async (req: Request , res: Response) => {
     try {
         const users: User[] = await User.query();

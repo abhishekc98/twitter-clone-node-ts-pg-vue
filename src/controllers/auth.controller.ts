@@ -10,7 +10,8 @@ const authRouter: Router = express.Router();
 /**
  * @route  GET api/<api-version>/auth
  * @desc   Auth route - get authenticated user
- * @access private */
+ * @access private 
+ */
 authRouter.get('/', auth,  async (req: Request, res: Response) => {
     try {
       const currentUser = await User.query().findById((<any>req).user.id);
@@ -24,7 +25,8 @@ authRouter.get('/', auth,  async (req: Request, res: Response) => {
 /**
  * @route  POST api/<api-version>/auth
  * @desc   Login user - check password and get token
- * @access public */
+ * @access public 
+ */
 authRouter.post('/', [check('email', 'Please enter a valid email').isEmail(),
 check('password', 'Password is required').exists()],
 async (req: Request, res: Response) => {

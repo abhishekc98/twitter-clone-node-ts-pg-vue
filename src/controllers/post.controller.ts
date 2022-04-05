@@ -10,7 +10,8 @@ const postRouter: Router = express.Router();
 /**
  * @route  POST api/<api-version>/posts
  * @desc   Submit post
- * @access private */
+ * @access private 
+ */
 postRouter.post('/', [auth, ...validationSubmitPost], 
 async(req: Request, res: Response, next: NextFunction) => {
     try{
@@ -34,7 +35,8 @@ async(req: Request, res: Response, next: NextFunction) => {
 /**
  * @route  GET api/<api-version>/posts
  * @desc   get all posts
- * @access public */
+ * @access public 
+ */
 postRouter.get('/',  
 async (req: Request, res: Response) => {
     try {
@@ -51,8 +53,8 @@ async (req: Request, res: Response) => {
 /**
  * @route  GET api/<api-version>/posts/:id
  * @desc   get post by id
- * @access private */
-
+ * @access private 
+ */
 postRouter.get('/:id', auth, 
 async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -70,7 +72,8 @@ async (req: Request, res: Response, next: NextFunction) => {
 /**
  * @route   DELETE api/<api-version>/posts/:id
  * @desc    Delete a post by id
- * @access private */
+ * @access private 
+ */
 postRouter.delete('/:id', auth, 
 async (req: Request, res: Response) => {
   try {
