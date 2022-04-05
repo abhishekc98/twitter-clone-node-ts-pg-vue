@@ -2,6 +2,7 @@ import express, { Router, Request, Response, NextFunction } from 'express';
 import { Result, ValidationError, validationResult, check} from 'express-validator'
 import jwt from 'jsonwebtoken';
 import { validateHash } from '../utils/hash';
+import validationLoginUser from '../middlewares/validations/validationLoginUser';
 import auth from '../middlewares/auth'
 import User from '../models/users.model';
 
@@ -27,8 +28,7 @@ authRouter.get('/', auth,  async (req: Request, res: Response) => {
  * @desc   Login user - check password and get token
  * @access public 
  */
-authRouter.post('/', [check('email', 'Please enter a valid email').isEmail(),
-check('password', 'Password is required').exists()],
+authRouter.post('/', validationLoginUser,
 async (req: Request, res: Response) => {
 
     const validationErrors: Result<ValidationError> = validationResult(req);
