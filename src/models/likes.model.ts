@@ -1,40 +1,40 @@
 import { Model, RelationMappings } from "objection";
+import Post from "./posts.model";
 import User from "./users.model";
-import Like from "./likes.model";
 
-export default class Post extends Model {
-
-    // tsconfig "strictPropertyInitialization": false   
-    post_id: number;
+export default class Like extends Model {
+    
+    like_id: number;
+    fk_post_id: number;
     fk_user_id: number;
-    text: string;
 
-    static tablename = "posts";
+    static tablename: string = "likes";
 
     static get tableName(): string {
         return this.tablename;
     }
 
-    // id name is different than default name "id"
     static get idColumn(): string {
-        return 'post_id';
-    }
+        return 'like_id';
+    } 
 
     static relationMappings: RelationMappings = {
+
         users: {
             relation: Model.BelongsToOneRelation,
             modelClass: User,
             join: {
-                from: "posts.fk_user_id",
+                from: "likes.fk_user_id",
                 to: "users.user_id"
             }
         },
-        likes: {
-            relation: Model.HasManyRelation,
-            modelClass: Like,
+
+        posts: {
+            relation: Model.BelongsToOneRelation,
+            modelClass: Post,
             join: {
-                from: "posts.post_id",
-                to: "likes.fk_post_id"
+                from: "likes.fk_post_id",
+                to: "post.post_id"
             }
         }
     }

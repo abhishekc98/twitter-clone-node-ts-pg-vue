@@ -2,7 +2,6 @@ import express, { Router, Request, Response, NextFunction } from 'express';
 import validationSubmitPost from '../middlewares/validations/validationSubmitPost';
 import auth from '../middlewares/auth'
 import Post from '../models/posts.model';
-import User from '../models/users.model';
 import { Result, ValidationError, validationResult } from 'express-validator';
 
 const postRouter: Router = express.Router();
@@ -12,8 +11,7 @@ const postRouter: Router = express.Router();
  * @desc   Submit post
  * @access private 
  */
-postRouter.post('/', [auth, ...validationSubmitPost], 
-async(req: Request, res: Response, next: NextFunction) => {
+postRouter.post('/', [auth, ...validationSubmitPost], async(req: Request, res: Response, next: NextFunction) => {
     try{
         const validationErrors: Result<ValidationError> = validationResult(req);
         if(!validationErrors.isEmpty()) {
@@ -37,8 +35,7 @@ async(req: Request, res: Response, next: NextFunction) => {
  * @desc   get all posts
  * @access public 
  */
-postRouter.get('/',  
-async (req: Request, res: Response) => {
+postRouter.get('/', async (req: Request, res: Response) => {
     try {
         const allPosts: Post[] = await Post.query();
 
@@ -55,8 +52,7 @@ async (req: Request, res: Response) => {
  * @desc   get post by id
  * @access private 
  */
-postRouter.get('/:id', auth, 
-async (req: Request, res: Response, next: NextFunction) => {
+postRouter.get('/:id', auth, async (req: Request, res: Response, next: NextFunction) => {
     try {
         const post: (Post|undefined) = await Post.query().findById(req.params.id);
         if(!post){ 
@@ -74,8 +70,7 @@ async (req: Request, res: Response, next: NextFunction) => {
  * @desc    Delete a post by id
  * @access private 
  */
-postRouter.delete('/:id', auth, 
-async (req: Request, res: Response) => {
+postRouter.delete('/:id', auth, async (req: Request, res: Response) => {
   try {
     const postToDelete: (Post | undefined) = await Post.query().findById(req.params.id);
     if (!postToDelete) {

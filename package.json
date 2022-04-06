@@ -9,6 +9,8 @@
     "dev": "npx nodemon ./src/index.ts",
     "create": "knex --knexfile ./src/db/knexfile.ts migrate:make",
     "migrate": "knex --knexfile ./src/db/knexfile.ts migrate:latest",
+    "migrate:up": "knex --knexfile ./src/db/knexfile.ts migrate:up",
+    "migrate:down": "knex --knexfile ./src/db/knexfile.ts migrate:down",
     "seed": "knex --knexfile ./src/db/knexfile.ts seed:run"
   },
   "author": "Abhishek Chakraborty",

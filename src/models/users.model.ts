@@ -1,6 +1,6 @@
 import { Model, RelationMappings } from "objection";
+import Like from "./likes.model";
 import Post from "./posts.model";
-
 
 export default class User extends Model {
 
@@ -30,7 +30,14 @@ export default class User extends Model {
                 from: "users.user_id",
                 to: "posts.fk_user_id"
             }
-
+        },
+        likes: {
+            relation: Model.HasManyRelation,
+            modelClass: Like,
+            join: {
+                from: "users.user_id",
+                to: "likes.fk_user_id"
+            }
         }    
     }
 }

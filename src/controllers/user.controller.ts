@@ -1,6 +1,6 @@
 import express, {Request, Response, Router} from 'express';
 import validationRegisterUser from '../middlewares/validations/validationRegisterUser';
-import { Result, ValidationError, validationResult, check} from 'express-validator'
+import { Result, ValidationError, validationResult } from 'express-validator'
 import { generateHash } from '../utils/hash';
 import jwt from 'jsonwebtoken';
 import User from '../models/users.model';
