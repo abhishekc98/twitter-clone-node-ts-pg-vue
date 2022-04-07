@@ -6,6 +6,11 @@
         width: 0 !important;
         display: none;
       }
+      /* html,body {
+        margin: 0;
+        padding:0;
+        overflow-x:hidden;
+      } */
     </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +19,7 @@
     <script src="https://kit.fontawesome.com/2cce807ebd.js" crossorigin="anonymous"></script>
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
-  <body class="m-0 p-0">
+  <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>

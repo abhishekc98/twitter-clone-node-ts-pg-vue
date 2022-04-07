@@ -1,16 +1,15 @@
 {
   "compilerOptions": {                        
     "target": "es6",                               
-    "module": "commonjs",                           
-    "outDir": "./dist",                             
-    "rootDir": "./src",                             
+    "module": "commonjs",                                                      
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,  
     "strictPropertyInitialization": false                     
   },
   "exclude":[
-    "./node_modules"
+    "./node_modules",
+    "twitter-client"
   ]
 }
 
