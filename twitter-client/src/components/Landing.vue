@@ -16,14 +16,14 @@
         </div>
         <div class="h-1/3">
           <div class="h-2/3 center">
-            <div class="float-left m-2 w-full">
+            <div class="m-2 w-full">
               <span class="font-worksans font-fontWeightCustom text-7xl"
                 >Happening now</span
               >
             </div>
           </div>
-          <div class="bg-blue-500 m-2">
-            <span class="font-worksans font-extrabold text-3xl"
+          <div class="m-2 mt-4">
+            <span class="font-worksans font-fontWeightCustom text-3xl"
               >Join Twitter today.</span
             >
           </div>
