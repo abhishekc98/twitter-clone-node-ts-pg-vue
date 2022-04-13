@@ -30,38 +30,42 @@
         </div>
         <div class="relative m-2 h-1/2">
           <div class="w-full">
-            <button
-              type="button"
-              class="
-                w-2/3
-                mt-4
-                md:w-72
-                p-2
-                rounded-full
-                bg-blue-500
-                hover:bg-blue-600
-              "
-            >
-              <span class="font-bold text-white">Sign up with email</span>
-            </button>
+            <router-link to="/register">
+              <button
+                type="button"
+                class="
+                  w-2/3
+                  mt-4
+                  md:w-72
+                  p-2
+                  rounded-full
+                  bg-blue-500
+                  hover:bg-blue-600
+                "
+              >
+                <span class="font-bold text-white">Sign up with email</span>
+              </button>
+            </router-link>
           </div>
           <div class="absolute bottom-2 w-full">
             <p class="text-lg font-bold">Already have an account?</p>
-            <button
-              type="button"
-              class="
-                w-2/3
-                mt-4
-                md:w-72
-                p-2
-                border-2
-                rounded-full
-                bg-white
-                hover:bg-blue-100
-              "
-            >
-              <span class="font-bold text-blue-500">Sign in</span>
-            </button>
+            <router-link to="/login">
+              <button
+                type="button"
+                class="
+                  w-2/3
+                  mt-4
+                  md:w-72
+                  p-2
+                  border-2
+                  rounded-full
+                  bg-white
+                  hover:bg-blue-100
+                "
+              >
+                <span class="font-bold text-blue-500">Sign in</span>
+              </button>
+            </router-link>
           </div>
         </div>
       </div>

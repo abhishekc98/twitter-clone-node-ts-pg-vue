@@ -96,7 +96,10 @@
           <i class="fa-solid fa-circle-user text-5xl"></i>
         </div>
 
-        <form v-on:submit.prevent="postTweet()" class="block w-full">
+        <form
+          v-on:submit.prevent="postTweet(currentTweetContent)"
+          class="block w-full"
+        >
           <textarea
             v-model="currentTweetContent"
             class="
@@ -140,7 +143,7 @@
         <div
           v-for="tweet in tweets"
           class="container p-1"
-          v-bind:key="tweet.id"
+          v-bind:key="tweet.post_id"
         >
           <!-- <div class="flex-none mr-4">
             <i class="fa-solid fa-circle-user text-3xl"></i>
@@ -158,7 +161,7 @@
             </div>
 
             <p class="py-4 h-24 overflow-y-scroll hide-scroll">
-              {{ tweet.content }}
+              {{ tweet.text }}
             </p>
             <div class="flex items-center justify-between w-full">
               <div class="flex items-center text-sm text-dark">
@@ -231,6 +234,9 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+import store from "../store";
+
 export default {
   name: "home-page",
 
@@ -246,21 +252,26 @@ export default {
         { icon: "far fa-user", title: "Profile", id: "profile" },
         { icon: "fas fa-ellipsis-h", title: "More", id: "more" },
       ],
-      tweets: [{ id: 1, content: "Test" }],
       currentTweetContent: "",
     };
   },
 
   methods: {
-    postTweet() {
-      let lastTweet = this.tweets[this.tweets.length - 1];
-      let newTweet = {
-        // Assign a new id
-        id: lastTweet.id + 1,
-        content: this.currentTweetContent,
-      };
-      if (newTweet.content) this.tweets.push(newTweet);
-      console.log(this.tweets);
+    ...mapActions(["addTweet", "getAllTweets"]),
+    postTweet(currentTweetContent) {
+      this.addTweet(currentTweetContent);
+    },
+    getTweets() {
+      this.getAllTweets();
+      console.log("get tweets: ", store.state.tweet.tweets);
+      return store.state.tweet.tweets;
+    },
+  },
+  computed: {
+    tweets() {
+      store.dispatch("getAllTweets");
+      console.log("get tweets: ", store.state.tweet.tweets);
+      return store.state.tweet.tweets.reverse() || [];
     },
   },
 };
